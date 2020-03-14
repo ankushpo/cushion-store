@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'Cart',
     'stripe',
     'order',
-    'crispy_forms'
+    'crispy_forms',
+    'debug_toolbar',
     ]
 
 MIDDLEWARE = [
@@ -53,6 +54,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'mysmallecom.urls'
@@ -146,3 +148,7 @@ EMAIL_PORT = '587'
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'Your Emailid'
 EMAIL_HOST_PASSWORD = 'Your password'
+
+##in regard to debug
+
+INTERNAL_IPS = ['127.0.0.1']

@@ -14,9 +14,11 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 
+
 from django.urls import include, path
 from django.contrib import admin
 from shopapp import views
+from django.conf import settings
 
 #use below comnneted lines only if you do not have django.contrib.staticfiles as installed apps in settings.py
 
@@ -35,5 +37,9 @@ urlpatterns = [
     path('account/logout/', views.signoutView, name='signout'),
 ]
 if settings.DEBUG:
+    import debug_toolbar
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns = [
+        path('__debug__/', include(debug_toolbar.urls)),
+    ] + urlpatterns
